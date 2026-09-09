@@ -20,6 +20,16 @@ No build step. Open `index.html` directly, or serve the folder:
 python3 -m http.server 8000
 ```
 
+## Deployment
+
+`.cpanel.yml` deploys this repo to `staging.thefencing.club` via cPanel Git
+Version Control (Pull or Deploy → Deploy HEAD Commit).
+
+`robots.txt` (`Disallow: /`) and `.htaccess` (`X-Robots-Tag: noindex`) keep the
+**staging** site out of search results. **A production deploy must drop both**
+files — remove them from the `.cpanel.yml` copy line, or overwrite them at the
+production document root.
+
 ## Notes for the club
 
 Copy that still needs the club's real figures is written so it reads sensibly

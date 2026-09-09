@@ -4,5 +4,5 @@ deployment:
     # cPanel runs this on "Pull or Deploy" from Git Version Control.
     - export DEPLOYPATH=/home/foylefencing/staging.thefencing.club
     - /bin/mkdir -p $DEPLOYPATH/assets
-    - /bin/cp -f index.html about.html programmes.html contact.html $DEPLOYPATH/
+    - /bin/cp -f index.html about.html programmes.html contact.html robots.txt .htaccess $DEPLOYPATH/
     - /bin/cp -f assets/style.css assets/nav.js $DEPLOYPATH/assets/

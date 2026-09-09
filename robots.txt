@@ -1,0 +1,4 @@
+# Staging site — keep out of search engines.
+# Production must replace this with a crawlable version.
+User-agent: *
+Disallow: /

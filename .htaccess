@@ -1,0 +1,6 @@
+# Staging site — tell search engines not to index anything, even if a URL
+# is discovered via an external link (robots.txt alone does not do this).
+# Production must remove this file.
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
