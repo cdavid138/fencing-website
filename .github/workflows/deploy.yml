@@ -1,0 +1,32 @@
+name: Deploy to cPanel staging
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull latest and run cPanel deployment over SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.CPANEL_SSH_HOST }}
+          username: ${{ secrets.CPANEL_SSH_USER }}
+          key: ${{ secrets.CPANEL_SSH_KEY }}
+          port: ${{ secrets.CPANEL_SSH_PORT }}
+          script: |
+            set -e
+            REPO="$HOME/repositories/fencing-website"
+            cd "$REPO"
+            git fetch origin master
+            git reset --hard origin/master
+            # Run the tasks in .cpanel.yml via cPanel's own deployment API.
+            /usr/local/bin/uapi --output=jsonpretty \
+              VersionControlDeployment create \
+              repository_root="$REPO"
