@@ -2,9 +2,7 @@
 deployment:
   tasks:
     # cPanel runs this on "Pull or Deploy" from Git Version Control.
-    # Set CPANEL_USER to your cPanel username and confirm the path matches the
-    # subdomain's Document Root shown in cPanel > Domains.
-    - export DEPLOYPATH=/home/CPANEL_USER/staging.thefencing.club
+    - export DEPLOYPATH=/home/foylefencing/staging.thefencing.club
     - /bin/mkdir -p $DEPLOYPATH/assets
     - /bin/cp -f index.html about.html programmes.html contact.html $DEPLOYPATH/
     - /bin/cp -f assets/style.css assets/nav.js $DEPLOYPATH/assets/
